@@ -1,0 +1,617 @@
+
+GccApplication3.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000014  00800100  00000390  00000424  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         00000390  00000000  00000000  00000094  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .bss          00000002  00800114  00800114  00000438  2**0
+                  ALLOC
+  3 .comment      00000030  00000000  00000000  00000438  2**0
+                  CONTENTS, READONLY
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000468  2**2
+                  CONTENTS, READONLY
+  5 .debug_aranges 00000050  00000000  00000000  000004a8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_info   00000aaa  00000000  00000000  000004f8  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 0000072c  00000000  00000000  00000fa2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000050a  00000000  00000000  000016ce  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_frame  00000094  00000000  00000000  00001bd8  2**2
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_str    00000404  00000000  00000000  00001c6c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_loc    00000280  00000000  00000000  00002070  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 12 .debug_ranges 00000040  00000000  00000000  000022f0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 34 00 	jmp	0x68	; 0x68 <__ctors_end>
+   4:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   8:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+   c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  10:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  14:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  18:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  1c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  20:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  24:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  28:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  2c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  30:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  34:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  38:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  3c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  40:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  44:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  48:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  4c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  50:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  54:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  58:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  5c:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  60:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+  64:	0c 94 51 00 	jmp	0xa2	; 0xa2 <__bad_interrupt>
+
+00000068 <__ctors_end>:
+  68:	11 24       	eor	r1, r1
+  6a:	1f be       	out	0x3f, r1	; 63
+  6c:	cf ef       	ldi	r28, 0xFF	; 255
+  6e:	d8 e0       	ldi	r29, 0x08	; 8
+  70:	de bf       	out	0x3e, r29	; 62
+  72:	cd bf       	out	0x3d, r28	; 61
+
+00000074 <__do_copy_data>:
+  74:	11 e0       	ldi	r17, 0x01	; 1
+  76:	a0 e0       	ldi	r26, 0x00	; 0
+  78:	b1 e0       	ldi	r27, 0x01	; 1
+  7a:	e0 e9       	ldi	r30, 0x90	; 144
+  7c:	f3 e0       	ldi	r31, 0x03	; 3
+  7e:	02 c0       	rjmp	.+4      	; 0x84 <__do_copy_data+0x10>
+  80:	05 90       	lpm	r0, Z+
+  82:	0d 92       	st	X+, r0
+  84:	a4 31       	cpi	r26, 0x14	; 20
+  86:	b1 07       	cpc	r27, r17
+  88:	d9 f7       	brne	.-10     	; 0x80 <__do_copy_data+0xc>
+
+0000008a <__do_clear_bss>:
+  8a:	21 e0       	ldi	r18, 0x01	; 1
+  8c:	a4 e1       	ldi	r26, 0x14	; 20
+  8e:	b1 e0       	ldi	r27, 0x01	; 1
+  90:	01 c0       	rjmp	.+2      	; 0x94 <.do_clear_bss_start>
+
+00000092 <.do_clear_bss_loop>:
+  92:	1d 92       	st	X+, r1
+
+00000094 <.do_clear_bss_start>:
+  94:	a6 31       	cpi	r26, 0x16	; 22
+  96:	b2 07       	cpc	r27, r18
+  98:	e1 f7       	brne	.-8      	; 0x92 <.do_clear_bss_loop>
+  9a:	0e 94 8c 01 	call	0x318	; 0x318 <main>
+  9e:	0c 94 c6 01 	jmp	0x38c	; 0x38c <_exit>
+
+000000a2 <__bad_interrupt>:
+  a2:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000a6 <PORT_Init>:
+// Port initialize
+void PORT_Init (void)
+{
+
+	// 2-5 Output
+	DDRD  |= (1<<PORTB0) | (1<<PORTB1) |(1<<PORTB2) |(1<<PORTB3) ;
+  a6:	8a b1       	in	r24, 0x0a	; 10
+  a8:	8f 60       	ori	r24, 0x0F	; 15
+  aa:	8a b9       	out	0x0a, r24	; 10
+	// D ports 6-7 Input
+	DDRD  &= ~((1<<PORTD4) | (1<<PORTD5) | (1<<PORTD6) | (1<<PORTD7)); 
+  ac:	8a b1       	in	r24, 0x0a	; 10
+  ae:	8f 70       	andi	r24, 0x0F	; 15
+  b0:	8a b9       	out	0x0a, r24	; 10
+  b2:	08 95       	ret
+
+000000b4 <IsPressed>:
+	
+}
+
+// Returns character pressed
+char IsPressed(void)
+{
+  b4:	cf 93       	push	r28
+  b6:	df 93       	push	r29
+  b8:	cd b7       	in	r28, 0x3d	; 61
+  ba:	de b7       	in	r29, 0x3e	; 62
+  bc:	66 97       	sbiw	r28, 0x16	; 22
+  be:	0f b6       	in	r0, 0x3f	; 63
+  c0:	f8 94       	cli
+  c2:	de bf       	out	0x3e, r29	; 62
+  c4:	0f be       	out	0x3f, r0	; 63
+  c6:	cd bf       	out	0x3d, r28	; 61
+	char Outputs[4] = {PORTD3,PORTD2,PORTD1,PORTD0}; // out
+  c8:	83 e0       	ldi	r24, 0x03	; 3
+  ca:	89 83       	std	Y+1, r24	; 0x01
+  cc:	82 e0       	ldi	r24, 0x02	; 2
+  ce:	8a 83       	std	Y+2, r24	; 0x02
+  d0:	81 e0       	ldi	r24, 0x01	; 1
+  d2:	8b 83       	std	Y+3, r24	; 0x03
+  d4:	1c 82       	std	Y+4, r1	; 0x04
+	char keys[4][4] = {"123A", "456B", "789C", "*0#D"};
+  d6:	80 e1       	ldi	r24, 0x10	; 16
+  d8:	e4 e0       	ldi	r30, 0x04	; 4
+  da:	f1 e0       	ldi	r31, 0x01	; 1
+  dc:	de 01       	movw	r26, r28
+  de:	15 96       	adiw	r26, 0x05	; 5
+  e0:	01 90       	ld	r0, Z+
+  e2:	0d 92       	st	X+, r0
+  e4:	8a 95       	dec	r24
+  e6:	e1 f7       	brne	.-8      	; 0xe0 <IsPressed+0x2c>
+	
+	volatile int c,r;
+	for( c = 0; c < 4; c++){
+  e8:	1e 8a       	std	Y+22, r1	; 0x16
+  ea:	1d 8a       	std	Y+21, r1	; 0x15
+  ec:	8d 89       	ldd	r24, Y+21	; 0x15
+  ee:	9e 89       	ldd	r25, Y+22	; 0x16
+  f0:	04 97       	sbiw	r24, 0x04	; 4
+  f2:	0c f0       	brlt	.+2      	; 0xf6 <IsPressed+0x42>
+  f4:	4a c0       	rjmp	.+148    	; 0x18a <IsPressed+0xd6>
+		PORTD = 0xFF; //set D ports to 1
+  f6:	3f ef       	ldi	r19, 0xFF	; 255
+		PORTD &= ~(1<<Outputs[c]); // set ports from Output to 0 one by one
+  f8:	41 e0       	ldi	r20, 0x01	; 1
+  fa:	50 e0       	ldi	r21, 0x00	; 0
+	char Outputs[4] = {PORTD3,PORTD2,PORTD1,PORTD0}; // out
+	char keys[4][4] = {"123A", "456B", "789C", "*0#D"};
+	
+	volatile int c,r;
+	for( c = 0; c < 4; c++){
+		PORTD = 0xFF; //set D ports to 1
+  fc:	3b b9       	out	0x0b, r19	; 11
+		PORTD &= ~(1<<Outputs[c]); // set ports from Output to 0 one by one
+  fe:	ed 89       	ldd	r30, Y+21	; 0x15
+ 100:	fe 89       	ldd	r31, Y+22	; 0x16
+ 102:	2b b1       	in	r18, 0x0b	; 11
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	90 e0       	ldi	r25, 0x00	; 0
+ 108:	8c 0f       	add	r24, r28
+ 10a:	9d 1f       	adc	r25, r29
+ 10c:	e8 0f       	add	r30, r24
+ 10e:	f9 1f       	adc	r31, r25
+ 110:	ca 01       	movw	r24, r20
+ 112:	00 80       	ld	r0, Z
+ 114:	02 c0       	rjmp	.+4      	; 0x11a <IsPressed+0x66>
+ 116:	88 0f       	add	r24, r24
+ 118:	99 1f       	adc	r25, r25
+ 11a:	0a 94       	dec	r0
+ 11c:	e2 f7       	brpl	.-8      	; 0x116 <IsPressed+0x62>
+ 11e:	80 95       	com	r24
+ 120:	90 95       	com	r25
+ 122:	82 23       	and	r24, r18
+ 124:	8b b9       	out	0x0b, r24	; 11
+	#else
+		//round up by default
+		__ticks_dc = (uint32_t)(ceil(fabs(__tmp)));
+	#endif
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+ 126:	8f e3       	ldi	r24, 0x3F	; 63
+ 128:	9c e9       	ldi	r25, 0x9C	; 156
+ 12a:	01 97       	sbiw	r24, 0x01	; 1
+ 12c:	f1 f7       	brne	.-4      	; 0x12a <IsPressed+0x76>
+ 12e:	00 c0       	rjmp	.+0      	; 0x130 <IsPressed+0x7c>
+ 130:	00 00       	nop
+		_delay_ms(10); // delay 10 ms
+		if((PIND & (1 << PIND7)) == 0) return keys[0][c]; // check if D7 is low
+ 132:	4f 99       	sbic	0x09, 7	; 9
+ 134:	06 c0       	rjmp	.+12     	; 0x142 <IsPressed+0x8e>
+ 136:	ed 89       	ldd	r30, Y+21	; 0x15
+ 138:	fe 89       	ldd	r31, Y+22	; 0x16
+ 13a:	ec 0f       	add	r30, r28
+ 13c:	fd 1f       	adc	r31, r29
+ 13e:	85 81       	ldd	r24, Z+5	; 0x05
+ 140:	25 c0       	rjmp	.+74     	; 0x18c <IsPressed+0xd8>
+		if((PIND & (1 << PIND6)) == 0) return keys[1][c]; // check if D6 is low
+ 142:	4e 99       	sbic	0x09, 6	; 9
+ 144:	06 c0       	rjmp	.+12     	; 0x152 <IsPressed+0x9e>
+ 146:	ed 89       	ldd	r30, Y+21	; 0x15
+ 148:	fe 89       	ldd	r31, Y+22	; 0x16
+ 14a:	ec 0f       	add	r30, r28
+ 14c:	fd 1f       	adc	r31, r29
+ 14e:	81 85       	ldd	r24, Z+9	; 0x09
+ 150:	1d c0       	rjmp	.+58     	; 0x18c <IsPressed+0xd8>
+		if((PIND & (1 << PIND5)) == 0) return keys[2][c]; // check if D5 is low
+ 152:	4d 99       	sbic	0x09, 5	; 9
+ 154:	06 c0       	rjmp	.+12     	; 0x162 <IsPressed+0xae>
+ 156:	ed 89       	ldd	r30, Y+21	; 0x15
+ 158:	fe 89       	ldd	r31, Y+22	; 0x16
+ 15a:	ec 0f       	add	r30, r28
+ 15c:	fd 1f       	adc	r31, r29
+ 15e:	85 85       	ldd	r24, Z+13	; 0x0d
+ 160:	15 c0       	rjmp	.+42     	; 0x18c <IsPressed+0xd8>
+		if((PIND & (1 << PIND4)) == 0) return keys[3][c]; // check if D4 is low
+ 162:	4c 99       	sbic	0x09, 4	; 9
+ 164:	06 c0       	rjmp	.+12     	; 0x172 <IsPressed+0xbe>
+ 166:	ed 89       	ldd	r30, Y+21	; 0x15
+ 168:	fe 89       	ldd	r31, Y+22	; 0x16
+ 16a:	ec 0f       	add	r30, r28
+ 16c:	fd 1f       	adc	r31, r29
+ 16e:	81 89       	ldd	r24, Z+17	; 0x11
+ 170:	0d c0       	rjmp	.+26     	; 0x18c <IsPressed+0xd8>
+{
+	char Outputs[4] = {PORTD3,PORTD2,PORTD1,PORTD0}; // out
+	char keys[4][4] = {"123A", "456B", "789C", "*0#D"};
+	
+	volatile int c,r;
+	for( c = 0; c < 4; c++){
+ 172:	8d 89       	ldd	r24, Y+21	; 0x15
+ 174:	9e 89       	ldd	r25, Y+22	; 0x16
+ 176:	01 96       	adiw	r24, 0x01	; 1
+ 178:	9e 8b       	std	Y+22, r25	; 0x16
+ 17a:	8d 8b       	std	Y+21, r24	; 0x15
+ 17c:	8d 89       	ldd	r24, Y+21	; 0x15
+ 17e:	9e 89       	ldd	r25, Y+22	; 0x16
+ 180:	04 97       	sbiw	r24, 0x04	; 4
+ 182:	0c f4       	brge	.+2      	; 0x186 <IsPressed+0xd2>
+ 184:	bb cf       	rjmp	.-138    	; 0xfc <IsPressed+0x48>
+		if((PIND & (1 << PIND6)) == 0) return keys[1][c]; // check if D6 is low
+		if((PIND & (1 << PIND5)) == 0) return keys[2][c]; // check if D5 is low
+		if((PIND & (1 << PIND4)) == 0) return keys[3][c]; // check if D4 is low
+	}
+	
+	return '\0';
+ 186:	80 e0       	ldi	r24, 0x00	; 0
+ 188:	01 c0       	rjmp	.+2      	; 0x18c <IsPressed+0xd8>
+ 18a:	80 e0       	ldi	r24, 0x00	; 0
+
+}
+ 18c:	66 96       	adiw	r28, 0x16	; 22
+ 18e:	0f b6       	in	r0, 0x3f	; 63
+ 190:	f8 94       	cli
+ 192:	de bf       	out	0x3e, r29	; 62
+ 194:	0f be       	out	0x3f, r0	; 63
+ 196:	cd bf       	out	0x3d, r28	; 61
+ 198:	df 91       	pop	r29
+ 19a:	cf 91       	pop	r28
+ 19c:	08 95       	ret
+
+0000019e <checkPassword>:
+
+
+
+// Checks if user input characters match password, it there is a match turns off LED
+void checkPassword(){
+ count=count+1;
+ 19e:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <__data_end>
+ 1a2:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <__data_end+0x1>
+ 1a6:	01 96       	adiw	r24, 0x01	; 1
+ 1a8:	90 93 15 01 	sts	0x0115, r25	; 0x800115 <__data_end+0x1>
+ 1ac:	80 93 14 01 	sts	0x0114, r24	; 0x800114 <__data_end>
+	if(IsPressed()==password[0]){
+ 1b0:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1b4:	90 91 00 01 	lds	r25, 0x0100	; 0x800100 <__data_start>
+ 1b8:	89 13       	cpse	r24, r25
+ 1ba:	39 c0       	rjmp	.+114    	; 0x22e <checkPassword+0x90>
+	while (IsPressed()){}
+ 1bc:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1c0:	81 11       	cpse	r24, r1
+ 1c2:	fc cf       	rjmp	.-8      	; 0x1bc <checkPassword+0x1e>
+	while (IsPressed()=='\0'){}
+ 1c4:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1c8:	88 23       	and	r24, r24
+ 1ca:	e1 f3       	breq	.-8      	; 0x1c4 <checkPassword+0x26>
+		if(IsPressed()==password[1]){
+ 1cc:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1d0:	90 91 01 01 	lds	r25, 0x0101	; 0x800101 <__data_start+0x1>
+ 1d4:	89 13       	cpse	r24, r25
+ 1d6:	2b c0       	rjmp	.+86     	; 0x22e <checkPassword+0x90>
+		while (IsPressed()){}
+ 1d8:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1dc:	81 11       	cpse	r24, r1
+ 1de:	fc cf       	rjmp	.-8      	; 0x1d8 <checkPassword+0x3a>
+		while (IsPressed()=='\0'){}
+ 1e0:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1e4:	88 23       	and	r24, r24
+ 1e6:	e1 f3       	breq	.-8      	; 0x1e0 <checkPassword+0x42>
+			if(IsPressed()==password[2]){
+ 1e8:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1ec:	90 91 02 01 	lds	r25, 0x0102	; 0x800102 <__data_start+0x2>
+ 1f0:	89 13       	cpse	r24, r25
+ 1f2:	1d c0       	rjmp	.+58     	; 0x22e <checkPassword+0x90>
+			while (IsPressed()){}
+ 1f4:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 1f8:	81 11       	cpse	r24, r1
+ 1fa:	fc cf       	rjmp	.-8      	; 0x1f4 <checkPassword+0x56>
+			while (IsPressed()=='\0'){}
+ 1fc:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 200:	88 23       	and	r24, r24
+ 202:	e1 f3       	breq	.-8      	; 0x1fc <checkPassword+0x5e>
+				if(IsPressed()==password[3]){
+ 204:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 208:	90 91 03 01 	lds	r25, 0x0103	; 0x800103 <__data_start+0x3>
+ 20c:	89 13       	cpse	r24, r25
+ 20e:	0f c0       	rjmp	.+30     	; 0x22e <checkPassword+0x90>
+				//Turns of LED if the password input is correct
+				PORTB &=  ~(1<<PORTB5);
+ 210:	2d 98       	cbi	0x05, 5	; 5
+				count = 0;
+ 212:	10 92 15 01 	sts	0x0115, r1	; 0x800115 <__data_end+0x1>
+ 216:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <__data_end>
+ 21a:	2f ef       	ldi	r18, 0xFF	; 255
+ 21c:	8b e7       	ldi	r24, 0x7B	; 123
+ 21e:	92 e9       	ldi	r25, 0x92	; 146
+ 220:	21 50       	subi	r18, 0x01	; 1
+ 222:	80 40       	sbci	r24, 0x00	; 0
+ 224:	90 40       	sbci	r25, 0x00	; 0
+ 226:	e1 f7       	brne	.-8      	; 0x220 <checkPassword+0x82>
+ 228:	00 c0       	rjmp	.+0      	; 0x22a <checkPassword+0x8c>
+ 22a:	00 00       	nop
+				_delay_ms(3000); // Wait for 3000ms and put back LED on
+				PORTB |=  (1<<PORTB5);
+ 22c:	2d 9a       	sbi	0x05, 5	; 5
+ 22e:	08 95       	ret
+
+00000230 <setPassword>:
+
+}
+
+//Sets user input password
+void setPassword(){
+if(IsPressed()){
+ 230:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 234:	88 23       	and	r24, r24
+ 236:	f1 f1       	breq	.+124    	; 0x2b4 <setPassword+0x84>
+	password[0]=IsPressed();
+ 238:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 23c:	80 93 00 01 	sts	0x0100, r24	; 0x800100 <__data_start>
+	while (IsPressed()){}
+ 240:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 244:	81 11       	cpse	r24, r1
+ 246:	fc cf       	rjmp	.-8      	; 0x240 <setPassword+0x10>
+	while (IsPressed()=='\0'){}
+ 248:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 24c:	88 23       	and	r24, r24
+ 24e:	e1 f3       	breq	.-8      	; 0x248 <setPassword+0x18>
+		if(IsPressed()){
+ 250:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 254:	88 23       	and	r24, r24
+ 256:	71 f1       	breq	.+92     	; 0x2b4 <setPassword+0x84>
+		password[1]=IsPressed();
+ 258:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 25c:	80 93 01 01 	sts	0x0101, r24	; 0x800101 <__data_start+0x1>
+		while (IsPressed()){}
+ 260:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 264:	81 11       	cpse	r24, r1
+ 266:	fc cf       	rjmp	.-8      	; 0x260 <setPassword+0x30>
+		while (IsPressed()=='\0'){}
+ 268:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 26c:	88 23       	and	r24, r24
+ 26e:	e1 f3       	breq	.-8      	; 0x268 <setPassword+0x38>
+			if(IsPressed()){
+ 270:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 274:	88 23       	and	r24, r24
+ 276:	f1 f0       	breq	.+60     	; 0x2b4 <setPassword+0x84>
+			password[2]=IsPressed();
+ 278:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 27c:	80 93 02 01 	sts	0x0102, r24	; 0x800102 <__data_start+0x2>
+			while (IsPressed()){}
+ 280:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 284:	81 11       	cpse	r24, r1
+ 286:	fc cf       	rjmp	.-8      	; 0x280 <setPassword+0x50>
+			while (IsPressed()=='\0'){}
+ 288:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 28c:	88 23       	and	r24, r24
+ 28e:	e1 f3       	breq	.-8      	; 0x288 <setPassword+0x58>
+				if(IsPressed()){
+ 290:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 294:	88 23       	and	r24, r24
+ 296:	71 f0       	breq	.+28     	; 0x2b4 <setPassword+0x84>
+				password[3]=IsPressed();
+ 298:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 29c:	80 93 03 01 	sts	0x0103, r24	; 0x800103 <__data_start+0x3>
+				// Turns on LED to indicate the password is set and the system is ready 
+				PORTB |=  (1<<PORTB5);
+ 2a0:	2d 9a       	sbi	0x05, 5	; 5
+ 2a2:	2f ef       	ldi	r18, 0xFF	; 255
+ 2a4:	81 ee       	ldi	r24, 0xE1	; 225
+ 2a6:	94 e0       	ldi	r25, 0x04	; 4
+ 2a8:	21 50       	subi	r18, 0x01	; 1
+ 2aa:	80 40       	sbci	r24, 0x00	; 0
+ 2ac:	90 40       	sbci	r25, 0x00	; 0
+ 2ae:	e1 f7       	brne	.-8      	; 0x2a8 <setPassword+0x78>
+ 2b0:	00 c0       	rjmp	.+0      	; 0x2b2 <setPassword+0x82>
+ 2b2:	00 00       	nop
+ 2b4:	08 95       	ret
+
+000002b6 <resetPassword>:
+	}
+}
+
+//resets password to Empty
+void resetPassword(){
+		password[0] = 'E';
+ 2b6:	e0 e0       	ldi	r30, 0x00	; 0
+ 2b8:	f1 e0       	ldi	r31, 0x01	; 1
+ 2ba:	85 e4       	ldi	r24, 0x45	; 69
+ 2bc:	80 83       	st	Z, r24
+		password[1] = ' ';
+ 2be:	80 e2       	ldi	r24, 0x20	; 32
+ 2c0:	81 83       	std	Z+1, r24	; 0x01
+		password[2] = ' ';
+ 2c2:	82 83       	std	Z+2, r24	; 0x02
+		password[3] = ' ';
+ 2c4:	83 83       	std	Z+3, r24	; 0x03
+ 2c6:	2f ef       	ldi	r18, 0xFF	; 255
+ 2c8:	81 ee       	ldi	r24, 0xE1	; 225
+ 2ca:	94 e0       	ldi	r25, 0x04	; 4
+ 2cc:	21 50       	subi	r18, 0x01	; 1
+ 2ce:	80 40       	sbci	r24, 0x00	; 0
+ 2d0:	90 40       	sbci	r25, 0x00	; 0
+ 2d2:	e1 f7       	brne	.-8      	; 0x2cc <resetPassword+0x16>
+ 2d4:	00 c0       	rjmp	.+0      	; 0x2d6 <resetPassword+0x20>
+ 2d6:	00 00       	nop
+ 2d8:	08 95       	ret
+
+000002da <alarm>:
+		_delay_ms(100);
+}
+
+
+// alarm Beep sound
+void alarm(){
+ 2da:	87 e0       	ldi	r24, 0x07	; 7
+ 2dc:	90 e0       	ldi	r25, 0x00	; 0
+	// set PWM to beep alarm
+	for(int x =0; x<7;x++)
+	{
+   OCR1A = 500;
+ 2de:	e8 e8       	ldi	r30, 0x88	; 136
+ 2e0:	f0 e0       	ldi	r31, 0x00	; 0
+ 2e2:	24 ef       	ldi	r18, 0xF4	; 244
+ 2e4:	31 e0       	ldi	r19, 0x01	; 1
+ 2e6:	31 83       	std	Z+1, r19	; 0x01
+ 2e8:	20 83       	st	Z, r18
+ 2ea:	4f ef       	ldi	r20, 0xFF	; 255
+ 2ec:	59 e6       	ldi	r21, 0x69	; 105
+ 2ee:	68 e1       	ldi	r22, 0x18	; 24
+ 2f0:	41 50       	subi	r20, 0x01	; 1
+ 2f2:	50 40       	sbci	r21, 0x00	; 0
+ 2f4:	60 40       	sbci	r22, 0x00	; 0
+ 2f6:	e1 f7       	brne	.-8      	; 0x2f0 <alarm+0x16>
+ 2f8:	00 c0       	rjmp	.+0      	; 0x2fa <alarm+0x20>
+ 2fa:	00 00       	nop
+   _delay_ms(500);
+   OCR1A = 0;
+ 2fc:	11 82       	std	Z+1, r1	; 0x01
+ 2fe:	10 82       	st	Z, r1
+ 300:	4f ef       	ldi	r20, 0xFF	; 255
+ 302:	59 e6       	ldi	r21, 0x69	; 105
+ 304:	68 e1       	ldi	r22, 0x18	; 24
+ 306:	41 50       	subi	r20, 0x01	; 1
+ 308:	50 40       	sbci	r21, 0x00	; 0
+ 30a:	60 40       	sbci	r22, 0x00	; 0
+ 30c:	e1 f7       	brne	.-8      	; 0x306 <alarm+0x2c>
+ 30e:	00 c0       	rjmp	.+0      	; 0x310 <alarm+0x36>
+ 310:	00 00       	nop
+ 312:	01 97       	sbiw	r24, 0x01	; 1
+
+
+// alarm Beep sound
+void alarm(){
+	// set PWM to beep alarm
+	for(int x =0; x<7;x++)
+ 314:	41 f7       	brne	.-48     	; 0x2e6 <alarm+0xc>
+   OCR1A = 0;
+    _delay_ms(500);
+   
+	  
+	}
+}
+ 316:	08 95       	ret
+
+00000318 <main>:
+
+int main(void)
+{
+
+	// Timer/Counter to alarm sound
+	DDRB |= (1 << DDB1);// Set pin B1 as output
+ 318:	21 9a       	sbi	0x04, 1	; 4
+	TCCR1A |= (1 << COM1A1);// non-inverting
+ 31a:	e0 e8       	ldi	r30, 0x80	; 128
+ 31c:	f0 e0       	ldi	r31, 0x00	; 0
+ 31e:	80 81       	ld	r24, Z
+ 320:	80 68       	ori	r24, 0x80	; 128
+ 322:	80 83       	st	Z, r24
+	TCCR1A |= (1 << WGM11) | (1 << WGM10); //10-bit phase corrected PWM 
+ 324:	80 81       	ld	r24, Z
+ 326:	83 60       	ori	r24, 0x03	; 3
+ 328:	80 83       	st	Z, r24
+	TCCR1B |= (1 << CS11);//  Prescaler to 8 
+ 32a:	e1 e8       	ldi	r30, 0x81	; 129
+ 32c:	f0 e0       	ldi	r31, 0x00	; 0
+ 32e:	80 81       	ld	r24, Z
+ 330:	82 60       	ori	r24, 0x02	; 2
+ 332:	80 83       	st	Z, r24
+		if(!(PINB & (1<<PINB7))){
+		resetPassword();
+		}
+		
+		//Checks if password is not set allows user to set a password, if password is already set continually checks for correct password
+		if (password[0]=='E')
+ 334:	c0 e0       	ldi	r28, 0x00	; 0
+ 336:	d1 e0       	ldi	r29, 0x01	; 1
+	
+	while(1){
+	
+	
+
+	PORT_Init();
+ 338:	0e 94 53 00 	call	0xa6	; 0xa6 <PORT_Init>
+
+		
+
+		//By clicking button on AVR resets the password
+		if(!(PINB & (1<<PINB7))){
+ 33c:	1f 9b       	sbis	0x03, 7	; 3
+		resetPassword();
+ 33e:	0e 94 5b 01 	call	0x2b6	; 0x2b6 <resetPassword>
+		}
+		
+		//Checks if password is not set allows user to set a password, if password is already set continually checks for correct password
+		if (password[0]=='E')
+ 342:	88 81       	ld	r24, Y
+ 344:	85 34       	cpi	r24, 0x45	; 69
+ 346:	71 f4       	brne	.+28     	; 0x364 <main+0x4c>
+		{
+		// Flashes LED to indicate ready to set password
+		PORTB |=  (1<<PORTB5);
+ 348:	2d 9a       	sbi	0x05, 5	; 5
+ 34a:	2f ef       	ldi	r18, 0xFF	; 255
+ 34c:	89 e6       	ldi	r24, 0x69	; 105
+ 34e:	98 e1       	ldi	r25, 0x18	; 24
+ 350:	21 50       	subi	r18, 0x01	; 1
+ 352:	80 40       	sbci	r24, 0x00	; 0
+ 354:	90 40       	sbci	r25, 0x00	; 0
+ 356:	e1 f7       	brne	.-8      	; 0x350 <main+0x38>
+ 358:	00 c0       	rjmp	.+0      	; 0x35a <main+0x42>
+ 35a:	00 00       	nop
+		_delay_ms(500);
+		PORTB &=  ~(1<<PORTB5);
+ 35c:	2d 98       	cbi	0x05, 5	; 5
+		setPassword();
+ 35e:	0e 94 18 01 	call	0x230	; 0x230 <setPassword>
+ 362:	ea cf       	rjmp	.-44     	; 0x338 <main+0x20>
+		}else{
+		if (IsPressed())
+ 364:	0e 94 5a 00 	call	0xb4	; 0xb4 <IsPressed>
+ 368:	88 23       	and	r24, r24
+ 36a:	31 f3       	breq	.-52     	; 0x338 <main+0x20>
+		{
+		checkPassword();
+ 36c:	0e 94 cf 00 	call	0x19e	; 0x19e <checkPassword>
+		if (count==100)
+ 370:	80 91 14 01 	lds	r24, 0x0114	; 0x800114 <__data_end>
+ 374:	90 91 15 01 	lds	r25, 0x0115	; 0x800115 <__data_end+0x1>
+ 378:	84 36       	cpi	r24, 0x64	; 100
+ 37a:	91 05       	cpc	r25, r1
+ 37c:	e9 f6       	brne	.-70     	; 0x338 <main+0x20>
+		{
+		alarm();
+ 37e:	0e 94 6d 01 	call	0x2da	; 0x2da <alarm>
+		count=0;
+ 382:	10 92 15 01 	sts	0x0115, r1	; 0x800115 <__data_end+0x1>
+ 386:	10 92 14 01 	sts	0x0114, r1	; 0x800114 <__data_end>
+ 38a:	d6 cf       	rjmp	.-84     	; 0x338 <main+0x20>
+
+0000038c <_exit>:
+ 38c:	f8 94       	cli
+
+0000038e <__stop_program>:
+ 38e:	ff cf       	rjmp	.-2      	; 0x38e <__stop_program>
